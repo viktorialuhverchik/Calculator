@@ -1,13 +1,36 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import './Themes.css';
 
+const themes = {
+    light: "light",
+    dark: "dark"
+}
+
 const Themes: FC = () => {
+
+    const[theme, setTheme] = useState(localStorage.getItem("themes") || themes.light);
+
+    const toggleTheme = (theme: string) => {
+        if (theme === themes.light) {
+            setTheme(themes.dark);
+        } else if (theme === themes.dark) {
+            setTheme(themes.light);
+        }
+    };
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        if (theme === themes.light) {
+            document.body.classList.add("light-theme");
+        } else {
+            document.body.classList.remove("dark-theme");
+        };
+    }, [theme]);
 
     return (
         <div className="themes">
-            {/* <i className="fa fa-moon-o" aria-hidden="true"></i> */}
-            <i className="fa fa-sun-o" aria-hidden="true"></i>
+            {theme === themes.light ? <img alt="sun" src="/icons/sun.png" onClick={() => toggleTheme(theme)}/> : <img alt="moon" src="/icons/moon.png" onClick={() => toggleTheme(theme)}/>}
         </div>
     )
 

@@ -2,7 +2,7 @@
     height: 500px;
     width: 300px;
     background-color: #ffffff;
-    border: 1px solid #241e1e ;
+    border: 1px solid #969393;
     border-radius: 10px;
     margin: 10vh auto;
     justify-content: center;
@@ -16,7 +16,7 @@
 .textarea {
     height: 50px;
     width: 268px;
-    border: none;
+    border: 1px solid #969393;
 }
 
 .textarea-equally {
@@ -49,6 +49,7 @@
 
 .large {
     font-size: 24px;
+    font-weight: 300;
 }
 
 .equally-wrapper {
@@ -66,4 +67,10 @@
     border-radius: 100%;
     color: #ffffff;
     font-size: 20px;
+}
+
+.delete-icon {
+    height: 13px;
+    width: 16px;
+    margin-bottom: 5px;
 }
