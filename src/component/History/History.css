@@ -1,0 +1,42 @@
+.history-wrapper {
+    width: 300px;
+    height: 590px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ecf3f3;
+    border: 1px solid #c2d3d3;
+    border-radius: 30px;
+    margin: 10vh auto;
+    box-shadow: 2px 2px 2px #c2d3d3;
+    overflow: auto;
+}
+
+.history-item {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 10px 15px;
+    color: #6e7575;
+    cursor: pointer;
+}
+
+.title-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 20px;
+    align-items: center;
+}
+
+.fa-arrow-left {
+    color: #6e7575;
+    font-size: 16px;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+span {
+    color: #6e7575;
+    margin-left: 85px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: default;
+}

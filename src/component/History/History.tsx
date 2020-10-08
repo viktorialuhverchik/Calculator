@@ -1,18 +1,34 @@
-import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
+import React, { FC, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { createHistory, showResultHistoryItem, toggleShowHistory } from '../../redux/actions/actions';
+import { PropsHistory } from '../../types';
 
 import './History.css';
 
-const History: FC = () => {
+const History: FC<PropsHistory> = ({ isShowHistory, history }) => {
 
-    const history: any = useSelector((state: any) => state.calc.history);
+    const dispatch: any = useDispatch();
+
+    useEffect(() => {
+        let history = localStorage.getItem("history");
+        if(!history) {
+            return;
+        }
+        let formattedHistory = JSON.parse(history);
+        dispatch(createHistory(formattedHistory));
+    }, [dispatch]);
 
     return (
-        <div className="history">
-            {history.map((item: string) => <div>{item}</div>)}
+        <div className="history-wrapper">
+            <div className="title-wrapper">
+                <i className="fa fa-arrow-left" aria-hidden="true" onClick={() => dispatch(toggleShowHistory(isShowHistory))}></i>
+                <span>History</span>
+            </div>
+            {history.map((item: string, index: number) => (
+                <div className="history-item" key={index} onClick={() => dispatch(showResultHistoryItem(isShowHistory, item))}>{item}</div>)
+            )}
         </div>
-    )
-
+    );
 };
 
 export default History;

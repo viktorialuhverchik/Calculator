@@ -1,28 +1,18 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../../redux/actions/actions';
+import { State } from '../../types';
 
 import './Themes.css';
 
-const themes = {
-    light: "light",
-    dark: "dark"
-}
-
 const Themes: FC = () => {
 
-    const[theme, setTheme] = useState(localStorage.getItem("themes") || themes.light);
-
-    const toggleTheme = (theme: string) => {
-        if (theme === themes.light) {
-            setTheme(themes.dark);
-        } else if (theme === themes.dark) {
-            setTheme(themes.light);
-        }
-    };
+    const dispatch: any = useDispatch();
+    const theme: string = useSelector((state: State) => state.app.theme);
 
     useEffect(() => {
-        localStorage.setItem("theme", theme);
-        if (theme === themes.light) {
-            document.body.classList.add("light-theme");
+        if (theme === "dark") {
+            document.body.classList.add("dark-theme");
         } else {
             document.body.classList.remove("dark-theme");
         };
@@ -30,10 +20,12 @@ const Themes: FC = () => {
 
     return (
         <div className="themes">
-            {theme === themes.light ? <img alt="sun" src="/icons/sun.png" onClick={() => toggleTheme(theme)}/> : <img alt="moon" src="/icons/moon.png" onClick={() => toggleTheme(theme)}/>}
+            {theme === "light" ?
+                <i className="fa fa-moon-o" aria-hidden="true" onClick={() => dispatch(toggleTheme(theme))}></i> :
+                <img alt="sun" src="/icons/sun.png" onClick={() => dispatch(toggleTheme(theme))}/>
+            }
         </div>
-    )
-
+    );
 };
 
 export default Themes;

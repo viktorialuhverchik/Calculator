@@ -1,0 +1,36 @@
+.display-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid #c2d3d3;
+}
+
+.display-value {
+    height: 200px;
+    width: 268px;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-bottom: 10px;
+    color: #6e7575;
+}
+
+.display-equal {
+    height: 60px;
+    width: 268px;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-bottom: 10px;
+    font-size: 26px;
+    font-weight: 500;
+    color: #6e7575;
+}
+
+.equal-exit {
+    opacity: 0;
+}
+
+.equal-exit-active {
+    opacity: 1;
+    transition: opacity 600ms;
+    font-size: 26px;
+}

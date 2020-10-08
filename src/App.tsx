@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Calculator from './component/Calculator/Calculator';
+import History from './component/History/History';
 
 import './App.css';
+import { useSelector } from 'react-redux';
+import { State } from './types';
 
-function App() {
+const App: FC = () => {
+
+    const isShowHistory: boolean = useSelector((state: State) => state.app.isShowHistory);
+    const history: string[] = useSelector((state: State) => state.calc.history);
+
     return (
-        <div className="App">
-            <header className="App-header">
+        <div className="app">
+            <header className="app-header">
                 <h1>Calculator</h1>
             </header>
-            <Calculator />
+            {!isShowHistory ? <Calculator isShowHistory={isShowHistory} /> : <History isShowHistory={isShowHistory} history={history} />}
         </div>
     );
-}
+};
 
 export default App;

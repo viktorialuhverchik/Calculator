@@ -1,15 +1,11 @@
 import {
     INPUT_VALUE,
     CLEAR_VALUE,
+    CREATE_HISTORY,
     DELETE_LAST,
-    EQUALL
+    EQUALL, CalcActionTypes
 } from '../types';
-
-interface CalcState {
-    value: string,
-    result: string,
-    history: string[]
-}
+import { CalcState } from '../types';
 
 const initialState: CalcState = {
     value: "",
@@ -17,7 +13,7 @@ const initialState: CalcState = {
     history: []
 };
 
-export const calcReducer = (state = initialState, action: any) => {
+export const calcReducer = (state = initialState, action: CalcActionTypes) => {
     switch (action.type) {
         case INPUT_VALUE:
             if (state.value === "") {
@@ -25,17 +21,18 @@ export const calcReducer = (state = initialState, action: any) => {
             } else {
                 state.value = `${state.value}${action.value}`;
             };
+            state.result = "";
             return state;
         case CLEAR_VALUE:
             state.value = "";
-            state.result = "0"
+            state.result = ""
             return state;
         case DELETE_LAST:
             state.value = `${state.value}`;
             let updateState: string = state.value.slice(0, -1);
             if(updateState.length === 0) {
                 state.value = "";
-                state.result = "0";
+                state.result = "";
             } else {
                 state.value = updateState;
             };
@@ -43,15 +40,25 @@ export const calcReducer = (state = initialState, action: any) => {
         case EQUALL:
             try {
                 if (state.value.length !== 0) {
-                    state.history.push(state.value);
-                    let result = eval(state.value);
+                    let result: string = eval(state.value);
                     state.result = result;
-                    state.value = `${result}`;
+                    state.value = `${state.value}`;
                 };
+                if(state.history.length === 11) {
+                    state.history.pop();
+                }
+                let history: string = `${state.value}=${state.result}`;
+                if(history !== "=") {
+                    state.history.unshift(history);
+                    localStorage.setItem("history", JSON.stringify(state.history));
+                }
             } catch(error) {
                 console.log(error);
                 state.result = "Check you value!";
-            }
+            };
+            return state;
+        case CREATE_HISTORY:
+                state.history = action.history;
             return state;
         default: 
             return state;
