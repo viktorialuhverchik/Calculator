@@ -2,8 +2,10 @@ import {
     INPUT_VALUE,
     CLEAR_VALUE,
     CREATE_HISTORY,
+    SHOW_HISTORY,
     DELETE_LAST,
-    EQUALL, CalcActionTypes
+    EQUALL,
+    CalcActionTypes
 } from '../types';
 import { CalcState } from '../types';
 
@@ -56,9 +58,14 @@ export const calcReducer = (state = initialState, action: CalcActionTypes) => {
                 console.log(error);
                 state.result = "Check you value!";
             };
+            // state.value = "";
             return state;
         case CREATE_HISTORY:
                 state.history = action.history;
+            return state;
+        case SHOW_HISTORY:
+                state.value = action.value;
+                state.result = action.result;
             return state;
         default: 
             return state;

@@ -4,6 +4,7 @@ export const DELETE_LAST = "DELETE_LAST";
 export const EQUALL = "EQUALL";
 export const TOGGLE_HISTORY = "TOGGLE_HISTORY";
 export const CREATE_HISTORY = "CREATE_HISTORY";
+export const SHOW_HISTORY = "SHOW_HISTORY";
 export const TOGGLE_THEME = "TOGGLE_THEME";
 
 export interface AppState {
@@ -44,10 +45,16 @@ interface CreateHistory {
     history: string[]
 };
 
+interface ShowHistory {
+    type: typeof SHOW_HISTORY,
+    value: string
+    result: string
+};
+
 export interface ToggleTheme {
     type: typeof TOGGLE_THEME,
     theme: string
 };
 
-export type CalcActionTypes = HandleClick | Calculate | ClearValue | DeleteLast | CreateHistory;
+export type CalcActionTypes = HandleClick | Calculate | ClearValue | DeleteLast | CreateHistory | ShowHistory;
 export type AppActionTypes = ToggleShowHistory | ToggleTheme;

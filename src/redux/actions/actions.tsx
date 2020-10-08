@@ -7,7 +7,8 @@ import {
     EQUALL,
     INPUT_VALUE,
     TOGGLE_HISTORY,
-    TOGGLE_THEME
+    TOGGLE_THEME,
+    SHOW_HISTORY
 } from "../types";
 
 export const handleClick = (value: string): CalcActionTypes => ({
@@ -42,13 +43,11 @@ export const showResultHistoryItem = (isShowHistory: boolean, history: string) =
         dispatch(clearValue());
         dispatch(toggleShowHistory(isShowHistory));
         let value = history.split("=")[0];
+        let result = history.split("=")[1];
         dispatch({
-            type: INPUT_VALUE,
-            value
-        });
-        dispatch({
-            type: EQUALL,
-            value
+            type: SHOW_HISTORY,
+            value,
+            result
         });
     };
 };
