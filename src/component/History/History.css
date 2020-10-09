@@ -1,6 +1,6 @@
 .history-wrapper {
-    width: 300px;
-    height: 590px;
+    width: 310px;
+    height: 580px;
     display: flex;
     flex-direction: column;
     background-color: #ecf3f3;
@@ -26,17 +26,17 @@
     align-items: center;
 }
 
-.fa-arrow-left {
-    color: #6e7575;
-    font-size: 16px;
-    font-weight: 200;
-    cursor: pointer;
-}
-
-span {
+.history-title {
     color: #6e7575;
     margin-left: 85px;
     font-size: 20px;
     font-weight: 500;
     cursor: default;
+}
+
+.fa-arrow-left {
+    color: #6e7575;
+    font-size: 16px;
+    font-weight: 200;
+    cursor: pointer;
 }

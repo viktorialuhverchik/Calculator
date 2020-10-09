@@ -19,7 +19,7 @@ export interface CalcState {
 };
 
 interface HandleClick {
-    type: typeof INPUT_VALUE,
+    type: typeof INPUT_VALUE
     value: string
 };
 
@@ -36,23 +36,23 @@ interface DeleteLast {
 };
 
 interface ToggleShowHistory {
-    type: typeof TOGGLE_HISTORY,
+    type: typeof TOGGLE_HISTORY
     isShowHistory: boolean
 };
 
 interface CreateHistory {
-    type: typeof CREATE_HISTORY,
+    type: typeof CREATE_HISTORY
     history: string[]
 };
 
 interface ShowHistory {
-    type: typeof SHOW_HISTORY,
+    type: typeof SHOW_HISTORY
     value: string
     result: string
 };
 
 export interface ToggleTheme {
-    type: typeof TOGGLE_THEME,
+    type: typeof TOGGLE_THEME
     theme: string
 };
 

@@ -23,14 +23,10 @@ export const calcReducer = (state = initialState, action: CalcActionTypes) => {
             } else {
                 state.value = `${state.value}${action.value}`;
             };
-            state.result = "";
-            return state;
+            return {...state, result: ""};
         case CLEAR_VALUE:
-            state.value = "";
-            state.result = ""
-            return state;
+            return {...state, value: "", result: ""};
         case DELETE_LAST:
-            state.value = `${state.value}`;
             let updateState: string = state.value.slice(0, -1);
             if(updateState.length === 0) {
                 state.value = "";
@@ -44,7 +40,6 @@ export const calcReducer = (state = initialState, action: CalcActionTypes) => {
                 if (state.value.length !== 0) {
                     let result: string = eval(state.value);
                     state.result = result;
-                    state.value = `${state.value}`;
                 };
                 if(state.history.length === 11) {
                     state.history.pop();
@@ -58,15 +53,11 @@ export const calcReducer = (state = initialState, action: CalcActionTypes) => {
                 console.log(error);
                 state.result = "Check you value!";
             };
-            // state.value = "";
-            return state;
+            return {...state, value: ""};
         case CREATE_HISTORY:
-                state.history = action.history;
-            return state;
+            return {...state, history: action.history};
         case SHOW_HISTORY:
-                state.value = action.value;
-                state.result = action.result;
-            return state;
+            return {...state, value: action.value, result: action.result};;
         default: 
             return state;
     };

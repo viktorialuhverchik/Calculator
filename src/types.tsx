@@ -11,10 +11,15 @@ export interface State {
 };
 
 export interface PropsHistory {
-    isShowHistory: boolean,
+    isShowHistory: boolean
     history: string[]
 };
 
 export interface PropsCalculator{
     isShowHistory: boolean
+    history: string[]
+};
+
+export interface PropsDisplay{
+    history: string[]
 };

@@ -9,8 +9,7 @@ const initialState: AppState = {
 export const appReducer = (state = initialState, action: AppActionTypes) => {
     switch (action.type) {
         case TOGGLE_HISTORY:
-            state.isShowHistory = action.isShowHistory;
-            return state;
+            return {...state, isShowHistory: action.isShowHistory};;
         case TOGGLE_THEME:
             if (action.theme === "light") {
                 state.theme = "dark";

@@ -6,12 +6,26 @@
 }
 
 .display-value {
-    height: 200px;
+    height: 100px;
     width: 268px;
     display: flex;
     flex-direction: column-reverse;
     padding-bottom: 10px;
     color: #6e7575;
+}
+
+.display-history {
+    height: 90px;
+    width: 268px;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-bottom: 10px;
+}
+
+.display-last_value {
+    font-size: 14px;
+    color: #9aa5a5;
+    cursor: pointer;
 }
 
 .display-equal {

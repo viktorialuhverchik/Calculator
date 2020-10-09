@@ -7,14 +7,14 @@ import { PropsCalculator } from '../../types';
 
 import './Calculator.css';
 
-const Calculator: FC<PropsCalculator> = ({isShowHistory}) => {
+const Calculator: FC<PropsCalculator> = ({isShowHistory, history}) => {
 
     const dispatch: any = useDispatch();
 
     return (
         <div className="calculator container">
             <Themes />
-            <Display />
+            <Display history={history}/>
             <div className="buttons-wrapper">
                 <div className="row">
                     <button className="btn symbol" onClick={() => dispatch(clearValue())}>C</button>

@@ -16,7 +16,7 @@ const App: FC = () => {
             <header className="app-header">
                 <h1>Calculator</h1>
             </header>
-            {!isShowHistory ? <Calculator isShowHistory={isShowHistory} /> : <History isShowHistory={isShowHistory} history={history} />}
+            {!isShowHistory ? <Calculator isShowHistory={isShowHistory} history={history} /> : <History isShowHistory={isShowHistory} history={history} />}
         </div>
     );
 };
