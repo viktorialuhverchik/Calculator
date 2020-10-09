@@ -7,13 +7,13 @@ import { PropsCalculator } from '../../types';
 
 import './Calculator.css';
 
-const Calculator: FC<PropsCalculator> = ({isShowHistory, history}) => {
+const Calculator: FC<PropsCalculator> = ({isShowHistory, history, theme}) => {
 
     const dispatch: any = useDispatch();
 
     return (
         <div className="calculator container">
-            <Themes />
+            <Themes theme={theme} />
             <Display history={history}/>
             <div className="buttons-wrapper">
                 <div className="row">

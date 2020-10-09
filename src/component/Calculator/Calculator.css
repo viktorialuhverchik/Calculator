@@ -9,6 +9,8 @@
     justify-content: center;
     align-items: center;
     box-shadow: 2px 2px 2px #c2d3d3;
+    animation-name: calculator;
+    animation-duration: 1s;
 }
 
 .buttons-wrapper {
@@ -42,6 +44,7 @@
     font-size: 20px;
     font-weight: 500;
     color: #6e7575;
+    transition: all 100ms;
 }
 
 .number:hover {
@@ -96,6 +99,7 @@
     border-radius: 100%;
     color: #ecf3f3;
     font-size: 20px;
+    transition: all 90ms;
 }
 
 .equally:hover {
@@ -120,4 +124,9 @@
 .delete-icon:active {
     height: 15px;
     width: 19px;
+}
+
+@keyframes calculator {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }

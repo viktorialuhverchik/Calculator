@@ -8,7 +8,8 @@ import {
     INPUT_VALUE,
     TOGGLE_HISTORY,
     TOGGLE_THEME,
-    SHOW_HISTORY
+    SHOW_HISTORY,
+    CHANGE_THEME
 } from "../types";
 
 export const handleClick = (value: string): CalcActionTypes => ({
@@ -54,5 +55,10 @@ export const showResultHistoryItem = (isShowHistory: boolean, history: string) =
 
 export  const toggleTheme = (theme: string): AppActionTypes => ({
     type: TOGGLE_THEME,
+    theme
+});
+
+export  const changeTheme = (theme: string): AppActionTypes => ({
+    type: CHANGE_THEME,
     theme
 });

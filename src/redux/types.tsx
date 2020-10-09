@@ -6,6 +6,7 @@ export const TOGGLE_HISTORY = "TOGGLE_HISTORY";
 export const CREATE_HISTORY = "CREATE_HISTORY";
 export const SHOW_HISTORY = "SHOW_HISTORY";
 export const TOGGLE_THEME = "TOGGLE_THEME";
+export const CHANGE_THEME = "CHANGE_THEME";
 
 export interface AppState {
     isShowHistory: boolean
@@ -56,5 +57,10 @@ export interface ToggleTheme {
     theme: string
 };
 
+export interface ChangeTheme {
+    type: typeof CHANGE_THEME
+    theme: string
+};
+
 export type CalcActionTypes = HandleClick | Calculate | ClearValue | DeleteLast | CreateHistory | ShowHistory;
-export type AppActionTypes = ToggleShowHistory | ToggleTheme;
+export type AppActionTypes = ToggleShowHistory | ToggleTheme | ChangeTheme;

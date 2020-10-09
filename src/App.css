@@ -11,4 +11,5 @@
     font-size: calc(10px + 2vmin);
     color: #FF3D00;
     padding-top: 10px;
+    cursor: default;
 }

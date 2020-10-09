@@ -12,6 +12,7 @@
     flex-direction: column-reverse;
     padding-bottom: 10px;
     color: #6e7575;
+    cursor: default;
 }
 
 .display-history {
@@ -37,6 +38,7 @@
     font-size: 26px;
     font-weight: 500;
     color: #6e7575;
+    cursor: default;
 }
 
 .equal-exit {

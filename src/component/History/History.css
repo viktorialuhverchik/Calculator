@@ -9,6 +9,8 @@
     margin: 10vh auto;
     box-shadow: 2px 2px 2px #c2d3d3;
     overflow: auto;
+    animation-name: history;
+    animation-duration: 1s;
 }
 
 .history-item {
@@ -39,4 +41,9 @@
     font-size: 16px;
     font-weight: 200;
     cursor: pointer;
+}
+
+@keyframes history {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }

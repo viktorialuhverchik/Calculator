@@ -18,8 +18,13 @@ export interface PropsHistory {
 export interface PropsCalculator{
     isShowHistory: boolean
     history: string[]
+    theme: string
 };
 
 export interface PropsDisplay{
     history: string[]
+};
+
+export interface PropsTheme{
+    theme: string
 };
