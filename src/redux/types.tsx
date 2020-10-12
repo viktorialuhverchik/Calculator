@@ -52,12 +52,12 @@ interface ShowHistory {
     result: string
 };
 
-export interface ToggleTheme {
+interface ToggleTheme {
     type: typeof TOGGLE_THEME
     theme: string
 };
 
-export interface ChangeTheme {
+interface ChangeTheme {
     type: typeof CHANGE_THEME
     theme: string
 };
