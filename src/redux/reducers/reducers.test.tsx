@@ -137,7 +137,7 @@ describe('calc reducer', () => {
             .toEqual({value: "", result: "", history: []});
     });
 
-    it('should handle EQUALL', () => {
+    it('should handle EQUALLY', () => {
         expect(calcReducer(
             {
                 value: "1+2",
@@ -145,27 +145,27 @@ describe('calc reducer', () => {
                 history: []
             }, 
             {
-                type: 'EQUALL'
+                type: 'EQUALLY'
             }
             ))
-            .toEqual({value: "", result: 3, history: ["1+2=3"]});
+            .toEqual({value: "", result: "3", history: ["1+2=3"]});
     });
 
-    it('should handle EQUALL if error', () => {
+    it('should handle EQUALLY if error', () => {
         expect(calcReducer(
             {
-                value: "1+-*2",
+                value: "hg",
                 result: "",
                 history: []
             }, 
             {
-                type: 'EQUALL'
+                type: 'EQUALLY'
             }
             ))
             .toEqual({value: "", result: "Check you value!", history: []});
     });
 
-    it('should handle EQUALL if sum percent at the right', () => {
+    it('should handle EQUALLY if sum percent at the right', () => {
         expect(calcReducer(
             {
                 value: "2+10%",
@@ -173,13 +173,13 @@ describe('calc reducer', () => {
                 history: []
             }, 
             {
-                type: 'EQUALL'
+                type: 'EQUALLY'
             }
             ))
             .toEqual({value: "", result: "2.2", history: ["2+10%=2.2"]});
     });
 
-    it('should handle EQUALL if sum percent at the left', () => {
+    it('should handle EQUALLY if sum percent at the left', () => {
         expect(calcReducer(
             {
                 value: "10%+2",
@@ -187,13 +187,13 @@ describe('calc reducer', () => {
                 history: []
             }, 
             {
-                type: 'EQUALL'
+                type: 'EQUALLY'
             }
             ))
-            .toEqual({value: "", result: "2.2", history: ["10%+2=2.2"]});
+            .toEqual({value: "", result: "2.1", history: ["10%+2=2.1"]});
     });
 
-    it('should handle EQUALL if minus percent at the right', () => {
+    it('should handle EQUALLY if minus percent at the right', () => {
         expect(calcReducer(
             {
                 value: "2-10%",
@@ -201,13 +201,13 @@ describe('calc reducer', () => {
                 history: []
             }, 
             {
-                type: 'EQUALL'
+                type: 'EQUALLY'
             }
             ))
             .toEqual({value: "", result: "1.8", history: ["2-10%=1.8"]});
     });
 
-    it('should handle EQUALL if minus percent at the left', () => {
+    it('should handle EQUALLY if minus percent at the left', () => {
         expect(calcReducer(
             {
                 value: "10%-2",
@@ -215,13 +215,13 @@ describe('calc reducer', () => {
                 history: []
             }, 
             {
-                type: 'EQUALL'
+                type: 'EQUALLY'
             }
             ))
-            .toEqual({value: "", result: "1.8", history: ["10%-2=1.8"]});
+            .toEqual({value: "", result: "-1.9", history: ["10%-2=-1.9"]});
     });
 
-    it('should handle EQUALL if multiplication percent at the right', () => {
+    it('should handle EQUALLY if multiplication percent at the right', () => {
         expect(calcReducer(
             {
                 value: "2*10%",
@@ -229,13 +229,13 @@ describe('calc reducer', () => {
                 history: []
             }, 
             {
-                type: 'EQUALL'
+                type: 'EQUALLY'
             }
             ))
             .toEqual({value: "", result: "0.2", history: ["2*10%=0.2"]});
     });
 
-    it('should handle EQUALL if multiplication percent at the left', () => {
+    it('should handle EQUALLY if multiplication percent at the left', () => {
         expect(calcReducer(
             {
                 value: "10%*2",
@@ -243,13 +243,13 @@ describe('calc reducer', () => {
                 history: []
             }, 
             {
-                type: 'EQUALL'
+                type: 'EQUALLY'
             }
             ))
             .toEqual({value: "", result: "0.2", history: ["10%*2=0.2"]});
     });
 
-    it('should handle EQUALL if division percent at the right', () => {
+    it('should handle EQUALLY if division percent at the right', () => {
         expect(calcReducer(
             {
                 value: "2/10%",
@@ -257,13 +257,13 @@ describe('calc reducer', () => {
                 history: []
             }, 
             {
-                type: 'EQUALL'
+                type: 'EQUALLY'
             }
             ))
             .toEqual({value: "", result: "20", history: ["2/10%=20"]});
     });
 
-    it('should handle EQUALL if division percent at the left', () => {
+    it('should handle EQUALLY if division percent at the left', () => {
         expect(calcReducer(
             {
                 value: "10%/2",
@@ -271,13 +271,13 @@ describe('calc reducer', () => {
                 history: []
             }, 
             {
-                type: 'EQUALL'
+                type: 'EQUALLY'
             }
             ))
-            .toEqual({value: "", result: "20", history: ["10%/2=20"]});
+            .toEqual({value: "", result: "0.05", history: ["10%/2=0.05"]});
     });
 
-    it('should handle EQUALL if number percent', () => {
+    it('should handle EQUALLY if number percent', () => {
         expect(calcReducer(
             {
                 value: "2%",
@@ -285,7 +285,7 @@ describe('calc reducer', () => {
                 history: []
             }, 
             {
-                type: 'EQUALL'
+                type: 'EQUALLY'
             }
             ))
             .toEqual({value: "", result: "0.02", history: ["2%=0.02"]});

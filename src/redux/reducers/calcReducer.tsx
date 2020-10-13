@@ -4,11 +4,11 @@ import {
     CREATE_HISTORY,
     SHOW_HISTORY,
     DELETE_LAST,
-    EQUALL,
+    EQUALLY,
     CalcActionTypes
 } from '../types';
 import { CalcState } from '../types';
-import { calculatePrecent, saveHistory } from '../actions/helpers';
+import { calculate, checkInputValue, saveHistory } from '../actions/helpers';
 
 const initialState: CalcState = {
     value: "",
@@ -19,14 +19,7 @@ const initialState: CalcState = {
 export const calcReducer = (state = initialState, action: CalcActionTypes) => {
     switch (action.type) {
         case INPUT_VALUE:
-            let numbers: RegExpExecArray | null = (/\d/g).exec(action.value);
-            if (state.value === "" && !numbers && state.result === "") {
-                state.value = `0${action.value}`;
-            } else if (!numbers && state.result !== "") {
-                state.value = `${state.result}${action.value}`;
-            } else {
-                state.value = `${state.value}${action.value}`;
-            };
+            checkInputValue(state, action.value);
             return {...state, result: ""};
         case CLEAR_VALUE:
             return {...state, value: "", result: ""};
@@ -39,9 +32,9 @@ export const calcReducer = (state = initialState, action: CalcActionTypes) => {
                 state.value = updateState;
             };
             return state;
-        case EQUALL:
+        case EQUALLY:
             try {
-                calculatePrecent(state);
+                calculate(state);
                 saveHistory(state);
             } catch(error) {
                 console.log(error);

@@ -48,6 +48,5 @@ export enum Operations {
     Multiplication = "*",
     Division = "/",
     Percent = "%",
-    Equally = "=",
     Dot = "."
 };

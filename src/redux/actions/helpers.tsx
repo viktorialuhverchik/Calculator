@@ -1,65 +1,78 @@
-import { CalcState } from '../types';
+import { CalcState, Element } from '../types';
 
-export const calculatePrecent = (state: CalcState) => {
-    let percent: RegExpExecArray | null = (/%/g).exec(state.value);
-    let symbol: RegExpExecArray | null = (/[-+/*]/g).exec(state.value);
-    if (state.value.length !== 0) {
-        if(percent !== null && symbol !== null) {
-            let indexPercent: number = percent["index"];
-            let indexSymbol: number = symbol["index"];
-            let valuePercent: number;
-            if (indexSymbol < indexPercent) {
-                valuePercent = +state.value.slice(indexSymbol + 1, indexPercent);
-            } else {
-                valuePercent = +state.value.slice(0, indexPercent);
-            };
-            let leftValueForCalc = +state.value.slice(0, symbol["index"]);
-            let rightValueForCalc = +state.value.slice(symbol["index"] + 1, state.value.length);
-            switch(symbol[0]) {
-                case "+":
-                    if (leftValueForCalc) {
-                        let calculation = leftValueForCalc + (leftValueForCalc * valuePercent) / 100;
-                        return state.result = `${calculation}`;
-                    } else {
-                        let calculation = rightValueForCalc + (rightValueForCalc * valuePercent) / 100;
-                        return state.result = `${calculation}`;
-                    };
-                case "-":
-                    if (leftValueForCalc) {
-                        let calculation = leftValueForCalc - (leftValueForCalc * valuePercent) / 100;
-                        return state.result = `${calculation}`;
-                    } else {
-                        let calculation = rightValueForCalc - (rightValueForCalc * valuePercent) / 100;
-                        return state.result = `${calculation}`;
-                    };
-                case "*":
-                    if (leftValueForCalc) {
-                        let calculation = leftValueForCalc * valuePercent / 100;
-                        return state.result = `${calculation}`;
-                    } else {
-                        let calculation = rightValueForCalc * valuePercent / 100;
-                        return state.result = `${calculation}`;
-                    };
-                case "/":
-                    if (leftValueForCalc) {
-                        let calculation = leftValueForCalc * 100 / valuePercent;
-                        return state.result = `${calculation}`;
-                    } else {
-                        let calculation = rightValueForCalc * 100 / valuePercent;
-                        return state.result = `${calculation}`;
-                    };
-            };
-        } else if (percent !== null && symbol === null) {
-            let indexPercent: number = percent["index"];
-            let valuePercent: number = +state.value.slice(0, indexPercent);
-            if (valuePercent) {
-                return state.result = `${valuePercent / 100}`;
-            };
-        } else {
-            let result: string = eval(state.value);
-            return state.result = result;
-        };
+let regExp = new RegExp(/[+-/*]/);
+
+export const checkInputValue = (state: CalcState, value: string) => {
+    let numbers: RegExpExecArray | null = (/\d/g).exec(value);
+    if (state.value === "" && state.result === "" && !numbers) {
+        state.value = `0${value}`;
+    } else if (state.result !== "" && !numbers) {
+        state.value = `${state.result}${value}`;
+    } else {
+        state.value = `${state.value}${value}`;
     };
+    return state.value;
+};
+
+export const calculate = (state: CalcState) => {
+    let valueForCalculate: any = [];
+    let element: Element = {
+        value: "",
+        operator: ""
+    };
+
+    for (let index = 0; index < state.value.length; index++) {
+        let symbol: string = state.value[index];
+
+        if (regExp.test(symbol)) {
+            if (element.value === "") {
+                element.operator = symbol;
+                continue;
+            };
+
+            valueForCalculate.push(element);
+            element = {
+                value: "",
+                operator: symbol
+            };
+            continue;
+        };
+
+        if (symbol === "%") {
+            let percentValue = parseInt(element.value) / 100;
+            if (valueForCalculate.length === 0) {
+                element.value = `${percentValue}`;
+                continue;
+            };
+
+            let lastNumber: number = parseInt(valueForCalculate[valueForCalculate.length - 1].value);
+            let newLastNumber: number = 0;
+
+            switch(element.operator) {
+                case "+":
+                    newLastNumber = lastNumber + percentValue * lastNumber;
+                    break;
+                case "-":
+                    newLastNumber = lastNumber - percentValue * lastNumber;
+                    break;
+                case "*":
+                    newLastNumber = lastNumber * percentValue;
+                    break;
+                case "/":
+                    newLastNumber = lastNumber / percentValue;
+                    break;
+            };
+            valueForCalculate[valueForCalculate.length - 1].value = `${newLastNumber}`;
+            element.value = "";
+            continue;
+        };
+        element.value += symbol;
+    }; 
+    if (element.value) {
+        valueForCalculate.push(element);   
+    };
+    let result: string = eval(valueForCalculate.map((item: Element) => item.operator + item.value).join(""));
+    return state.result = `${result}`;
 };
 
 export const saveHistory = (state: CalcState) => {

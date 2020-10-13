@@ -8,10 +8,11 @@ Object {
       <div
         class="themes"
       >
-        <i
-          aria-hidden="true"
-          class="fa fa-moon-o"
-          data-testid="moon"
+        <img
+          alt="sun"
+          class="icon-sun"
+          data-testid="sun"
+          src="/icons/sun.png"
         />
       </div>
     </div>
@@ -20,10 +21,11 @@ Object {
     <div
       class="themes"
     >
-      <i
-        aria-hidden="true"
-        class="fa fa-moon-o"
-        data-testid="moon"
+      <img
+        alt="sun"
+        class="icon-sun"
+        data-testid="sun"
+        src="/icons/sun.png"
       />
     </div>
   </div>,

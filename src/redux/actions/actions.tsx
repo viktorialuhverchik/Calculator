@@ -4,7 +4,7 @@ import {
     CLEAR_VALUE,
     CREATE_HISTORY,
     DELETE_LAST,
-    EQUALL,
+    EQUALLY,
     INPUT_VALUE,
     TOGGLE_HISTORY,
     TOGGLE_THEME,
@@ -18,7 +18,7 @@ export const handleClick = (value: string): CalcActionTypes => ({
 });
 
 export const calculate = (): CalcActionTypes => ({
-    type: EQUALL
+    type: EQUALLY
 });
 
 export const clearValue = (): CalcActionTypes => ({

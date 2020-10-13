@@ -13,7 +13,7 @@ describe('actions', () => {
 
     it('should create an calculate action', () => {
         const expectedAction = {
-            type: types.EQUALL
+            type: types.EQUALLY
         };
         expect(actions.calculate()).toEqual(expectedAction);
     });

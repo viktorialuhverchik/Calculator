@@ -11,8 +11,8 @@ import { TOGGLE_THEME } from '../../redux/types';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-let isShowHistory: boolean = true;
-let theme: string = "light";
+let isShowHistory: boolean = false;
+let theme: string = "dark";
 let value: string = "1+2";
 let result: string = "3";
 let history: string[] = ["1+2=3"];
@@ -28,7 +28,6 @@ const initialState = {
         history
     }
 };
-
 
 describe('Themes component',() => {
 
@@ -50,12 +49,12 @@ describe('Themes component',() => {
 
     it('click moon', () => {
         const { getByTestId } = renderWithRedux(<Themes theme={theme} />);
-        fireEvent.click(getByTestId("moon"));
-        expect(getByTestId("moon")).toBeTruthy();
+        fireEvent.click(getByTestId("sun"));
+        expect(getByTestId("sun")).toBeTruthy();
     });
 
     it('should toggle theme', () => {
-        theme = "dark";
+        theme = "light";
         const expectedActions = {
             type: TOGGLE_THEME,
             theme
@@ -66,7 +65,7 @@ describe('Themes component',() => {
 
     it('click sun', () => {
         const { getByTestId } = renderWithRedux(<Themes theme={theme} />);
-        fireEvent.click(getByTestId("sun"));
-        expect(getByTestId("sun")).toBeTruthy();
+        fireEvent.click(getByTestId("moon"));
+        expect(getByTestId("moon")).toBeTruthy();
     });
 });

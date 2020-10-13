@@ -1,7 +1,7 @@
 export const INPUT_VALUE = "INPUT_VALUE";
 export const CLEAR_VALUE = "CLEAR_VALUE";
 export const DELETE_LAST = "DELETE_LAST";
-export const EQUALL = "EQUALL";
+export const EQUALLY = "EQUALLY";
 export const TOGGLE_HISTORY = "TOGGLE_HISTORY";
 export const CREATE_HISTORY = "CREATE_HISTORY";
 export const SHOW_HISTORY = "SHOW_HISTORY";
@@ -19,13 +19,18 @@ export interface CalcState {
     history: string[]
 };
 
+export interface Element {
+    value: string
+    operator: string
+};
+
 interface HandleClick {
     type: typeof INPUT_VALUE
     value: string
 };
 
 interface Calculate {
-    type: typeof EQUALL
+    type: typeof EQUALLY
 };
 
 interface ClearValue {
