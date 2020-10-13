@@ -25,8 +25,19 @@ const Themes: FC<PropsTheme> = ({theme}) => {
     return (
         <div className="themes">
             {theme === "light" ?
-                <i className="fa fa-moon-o" aria-hidden="true" onClick={() => dispatch(toggleTheme(theme))}></i> :
-                <img alt="sun" className="icon-sun" src="/icons/sun.png" onClick={() => dispatch(toggleTheme(theme))}/>
+                <i
+                    className="fa fa-moon-o"
+                    data-testid="moon"
+                    aria-hidden="true"
+                    onClick={() => dispatch(toggleTheme(theme))}
+                /> :
+                <img
+                    alt="sun"
+                    data-testid="sun"
+                    className="icon-sun"
+                    src="/icons/sun.png"
+                    onClick={() => dispatch(toggleTheme(theme))}
+                />
             }
         </div>
     );

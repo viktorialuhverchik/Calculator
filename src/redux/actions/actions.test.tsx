@@ -1,15 +1,7 @@
 import * as actions from './actions';
 import * as types from '../types';
-import { makeTestStore } from '../../index.test';
 
 describe('actions', () => {
-
-    let store: any;
-
-    beforeEach(() => {
-        store = makeTestStore();
-    });
-
     it('should create an handle click action', () => {
         let value: string = "1";
         const expectedAction = {

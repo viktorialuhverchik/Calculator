@@ -21,11 +21,22 @@ const History: FC<PropsHistory> = ({ isShowHistory, history }) => {
     return (
         <div className="history-wrapper">
             <div className="title-wrapper">
-                <i className="fa fa-arrow-left" aria-hidden="true" onClick={() => dispatch(toggleShowHistory(isShowHistory))}></i>
+                <i
+                    className="fa fa-arrow-left"
+                    aria-hidden="true"
+                    data-testid="arrow-left"
+                    onClick={() => dispatch(toggleShowHistory(isShowHistory))}
+                />
                 <span className="history-title">History</span>
             </div>
             {history.map((item: string, index: number) => (
-                <div className="history-item" key={index} onClick={() => dispatch(showResultHistoryItem(isShowHistory, item))}>{item}</div>)
+                <div
+                    className="history-item"
+                    data-testid="history-item"
+                    key={index}
+                    onClick={() => dispatch(showResultHistoryItem(isShowHistory, item))}
+                >{item}
+                </div>)
             )}
         </div>
     );

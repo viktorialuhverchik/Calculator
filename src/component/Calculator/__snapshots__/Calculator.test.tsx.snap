@@ -1,222 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App component should render App component 1`] = `
+exports[`Calculator component renders Calculator component 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
-        class="app"
-      >
-        <header
-          class="app-header"
-        >
-          <h1>
-            Calculator
-          </h1>
-        </header>
-        <div
-          class="calculator container"
-        >
-          <div
-            class="themes"
-          >
-            <i
-              aria-hidden="true"
-              class="fa fa-moon-o"
-              data-testid="moon"
-            />
-          </div>
-          <div
-            class="display-wrapper"
-          >
-            <div
-              class="display-history"
-            >
-              <span
-                class="display-last_value"
-                data-testid="last-value"
-              />
-            </div>
-            <div
-              class="display-value"
-            />
-            <div
-              class="display-equal"
-            >
-              = 0
-            </div>
-          </div>
-          <div
-            class="buttons-wrapper"
-          >
-            <div
-              class="row"
-            >
-              <button
-                class="btn symbol"
-                data-testid="clear"
-              >
-                C
-              </button>
-              <button
-                class="btn delete-icon_button"
-                data-testid="delete-last"
-              >
-                <img
-                  alt="delete"
-                  class="delete-icon"
-                  src="/icons/delete.png"
-                />
-              </button>
-              <button
-                class="btn symbol"
-                data-testid="percent"
-              >
-                %
-              </button>
-              <button
-                class="btn symbol large"
-                data-testid="division"
-              >
-                ÷
-              </button>
-            </div>
-            <div
-              class="row"
-            >
-              <button
-                class="btn number"
-                data-testid="seven"
-              >
-                7
-              </button>
-              <button
-                class="btn number"
-                data-testid="eight"
-              >
-                8
-              </button>
-              <button
-                class="btn number"
-                data-testid="nine"
-              >
-                9
-              </button>
-              <button
-                class="btn symbol large"
-                data-testid="multiplication"
-              >
-                ×
-              </button>
-            </div>
-            <div
-              class="row"
-            >
-              <button
-                class="btn number"
-                data-testid="four"
-              >
-                4
-              </button>
-              <button
-                class="btn number"
-                data-testid="five"
-              >
-                5
-              </button>
-              <button
-                class="btn number"
-                data-testid="six"
-              >
-                6
-              </button>
-              <button
-                class="btn symbol large"
-                data-testid="minus"
-              >
-                −
-              </button>
-            </div>
-            <div
-              class="row"
-            >
-              <button
-                class="btn number"
-                data-testid="one"
-              >
-                1
-              </button>
-              <button
-                class="btn number"
-                data-testid="two"
-              >
-                2
-              </button>
-              <button
-                class="btn number"
-                data-testid="three"
-              >
-                3
-              </button>
-              <button
-                class="btn symbol large"
-                data-testid="plus"
-              >
-                +
-              </button>
-            </div>
-            <div
-              class="row"
-            >
-              <button
-                class="btn number"
-                data-testid="history"
-              >
-                <i
-                  aria-hidden="true"
-                  class="fa fa-history"
-                />
-              </button>
-              <button
-                class="btn number"
-                data-testid="zero"
-              >
-                0
-              </button>
-              <button
-                class="btn number"
-                data-testid="dot"
-              >
-                .
-              </button>
-              <div
-                class="equally-wrapper"
-              >
-                <div
-                  class="btn equally"
-                  data-testid="equally"
-                >
-                  =
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="app"
-    >
-      <header
-        class="app-header"
-      >
-        <h1>
-          Calculator
-        </h1>
-      </header>
       <div
         class="calculator container"
       >
@@ -401,6 +189,196 @@ Object {
               >
                 =
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="calculator container"
+    >
+      <div
+        class="themes"
+      >
+        <i
+          aria-hidden="true"
+          class="fa fa-moon-o"
+          data-testid="moon"
+        />
+      </div>
+      <div
+        class="display-wrapper"
+      >
+        <div
+          class="display-history"
+        >
+          <span
+            class="display-last_value"
+            data-testid="last-value"
+          />
+        </div>
+        <div
+          class="display-value"
+        />
+        <div
+          class="display-equal"
+        >
+          = 0
+        </div>
+      </div>
+      <div
+        class="buttons-wrapper"
+      >
+        <div
+          class="row"
+        >
+          <button
+            class="btn symbol"
+            data-testid="clear"
+          >
+            C
+          </button>
+          <button
+            class="btn delete-icon_button"
+            data-testid="delete-last"
+          >
+            <img
+              alt="delete"
+              class="delete-icon"
+              src="/icons/delete.png"
+            />
+          </button>
+          <button
+            class="btn symbol"
+            data-testid="percent"
+          >
+            %
+          </button>
+          <button
+            class="btn symbol large"
+            data-testid="division"
+          >
+            ÷
+          </button>
+        </div>
+        <div
+          class="row"
+        >
+          <button
+            class="btn number"
+            data-testid="seven"
+          >
+            7
+          </button>
+          <button
+            class="btn number"
+            data-testid="eight"
+          >
+            8
+          </button>
+          <button
+            class="btn number"
+            data-testid="nine"
+          >
+            9
+          </button>
+          <button
+            class="btn symbol large"
+            data-testid="multiplication"
+          >
+            ×
+          </button>
+        </div>
+        <div
+          class="row"
+        >
+          <button
+            class="btn number"
+            data-testid="four"
+          >
+            4
+          </button>
+          <button
+            class="btn number"
+            data-testid="five"
+          >
+            5
+          </button>
+          <button
+            class="btn number"
+            data-testid="six"
+          >
+            6
+          </button>
+          <button
+            class="btn symbol large"
+            data-testid="minus"
+          >
+            −
+          </button>
+        </div>
+        <div
+          class="row"
+        >
+          <button
+            class="btn number"
+            data-testid="one"
+          >
+            1
+          </button>
+          <button
+            class="btn number"
+            data-testid="two"
+          >
+            2
+          </button>
+          <button
+            class="btn number"
+            data-testid="three"
+          >
+            3
+          </button>
+          <button
+            class="btn symbol large"
+            data-testid="plus"
+          >
+            +
+          </button>
+        </div>
+        <div
+          class="row"
+        >
+          <button
+            class="btn number"
+            data-testid="history"
+          >
+            <i
+              aria-hidden="true"
+              class="fa fa-history"
+            />
+          </button>
+          <button
+            class="btn number"
+            data-testid="zero"
+          >
+            0
+          </button>
+          <button
+            class="btn number"
+            data-testid="dot"
+          >
+            .
+          </button>
+          <div
+            class="equally-wrapper"
+          >
+            <div
+              class="btn equally"
+              data-testid="equally"
+            >
+              =
             </div>
           </div>
         </div>

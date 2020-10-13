@@ -23,7 +23,12 @@ const Display: FC<PropsDisplay> = ({history}) => {
     return (
         <div className="display-wrapper">
             <div className="display-history">
-                <span className="display-last_value" onClick={() => dispatch(showResultHistoryItem(true, lastValue))}>{lastValue}</span>
+                <span
+                    className="display-last_value"
+                    data-testid="last-value"
+                    onClick={() => dispatch(showResultHistoryItem(true, lastValue))}
+                >{lastValue}
+                </span>
             </div>
             <div className="display-value">{value}</div>
             <CSSTransition

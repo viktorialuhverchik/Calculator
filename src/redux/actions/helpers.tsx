@@ -48,8 +48,6 @@ export const calculatePrecent = (state: CalcState) => {
                         let calculation = rightValueForCalc * 100 / valuePercent;
                         return state.result = `${calculation}`;
                     };
-                default:
-                    return;
             };
         } else if (percent !== null && symbol === null) {
             let indexPercent: number = percent["index"];

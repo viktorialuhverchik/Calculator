@@ -165,6 +165,132 @@ describe('calc reducer', () => {
             .toEqual({value: "", result: "Check you value!", history: []});
     });
 
+    it('should handle EQUALL if sum percent at the right', () => {
+        expect(calcReducer(
+            {
+                value: "2+10%",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'EQUALL'
+            }
+            ))
+            .toEqual({value: "", result: "2.2", history: ["2+10%=2.2"]});
+    });
+
+    it('should handle EQUALL if sum percent at the left', () => {
+        expect(calcReducer(
+            {
+                value: "10%+2",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'EQUALL'
+            }
+            ))
+            .toEqual({value: "", result: "2.2", history: ["10%+2=2.2"]});
+    });
+
+    it('should handle EQUALL if minus percent at the right', () => {
+        expect(calcReducer(
+            {
+                value: "2-10%",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'EQUALL'
+            }
+            ))
+            .toEqual({value: "", result: "1.8", history: ["2-10%=1.8"]});
+    });
+
+    it('should handle EQUALL if minus percent at the left', () => {
+        expect(calcReducer(
+            {
+                value: "10%-2",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'EQUALL'
+            }
+            ))
+            .toEqual({value: "", result: "1.8", history: ["10%-2=1.8"]});
+    });
+
+    it('should handle EQUALL if multiplication percent at the right', () => {
+        expect(calcReducer(
+            {
+                value: "2*10%",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'EQUALL'
+            }
+            ))
+            .toEqual({value: "", result: "0.2", history: ["2*10%=0.2"]});
+    });
+
+    it('should handle EQUALL if multiplication percent at the left', () => {
+        expect(calcReducer(
+            {
+                value: "10%*2",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'EQUALL'
+            }
+            ))
+            .toEqual({value: "", result: "0.2", history: ["10%*2=0.2"]});
+    });
+
+    it('should handle EQUALL if division percent at the right', () => {
+        expect(calcReducer(
+            {
+                value: "2/10%",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'EQUALL'
+            }
+            ))
+            .toEqual({value: "", result: "20", history: ["2/10%=20"]});
+    });
+
+    it('should handle EQUALL if division percent at the left', () => {
+        expect(calcReducer(
+            {
+                value: "10%/2",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'EQUALL'
+            }
+            ))
+            .toEqual({value: "", result: "20", history: ["10%/2=20"]});
+    });
+
+    it('should handle EQUALL if number percent', () => {
+        expect(calcReducer(
+            {
+                value: "2%",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'EQUALL'
+            }
+            ))
+            .toEqual({value: "", result: "0.02", history: ["2%=0.02"]});
+    });
+
     it('should handle CREATE_HISTORY', () => {
         expect(calcReducer(
             undefined, 
