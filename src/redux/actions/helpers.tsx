@@ -11,12 +11,24 @@ export const checkInputValue = (state: CalcState, value: string) => {
         state.value = `${state.value}${value}`;
     } else if (state.result !== "" && isOperator) {
         state.value = `${state.result}${value}`;
-    } else if (state.value !== "" && value === "%") {
+    } else if (state.value !== "") {
         state.value = `${state.value}${value}`;
         let lastSymbol: string = state.value.slice(state.value.length - 2, state.value.length - 1);
         if (regExp.test(lastSymbol)) {
+            if (isOperator) {
+                let updatedValue: string = state.value.slice(0, state.value.length - 2);
+                state.value = `${updatedValue}${value}`;
+            };
+            if (value === "%") {
+                let updatedValue: string = state.value.slice(0, state.value.length - 1);
+                state.value = `${updatedValue}0${value}`;
+            };
+        } else if (lastSymbol === "%" && value === "%") {
+            let updatedValue: string = state.value.slice(0, state.value.length - 2);
+            state.value = `${updatedValue}${value}`;
+        } else if (lastSymbol === "%" && !isOperator) {
             let updatedValue: string = state.value.slice(0, state.value.length - 1);
-            state.value = `${updatedValue}0${value}`;
+            state.value = `${updatedValue}+${value}`;
         };
     } else {
         state.value = `${state.value}${value}`;
