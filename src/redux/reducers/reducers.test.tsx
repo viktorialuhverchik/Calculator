@@ -95,6 +95,21 @@ describe('calc reducer', () => {
             .toEqual({value: "12", result: "", history: []});
     });
 
+    it('should handle INPUT_VALUE if multiplication percent', () => {
+        expect(calcReducer(
+            {
+                value: "2+",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'INPUT_VALUE',
+                value: "%"
+            }
+            ))
+            .toEqual({value: "2+0%", result: "", history: []});
+    });
+
     it('should handle DELETE_LAST', () => {
         expect(calcReducer(
             {
@@ -165,7 +180,21 @@ describe('calc reducer', () => {
             .toEqual({value: "", result: "Check you value!", history: []});
     });
 
-    it('should handle EQUALLY if sum percent at the right', () => {
+    it('should handle EQUALLY if number percent', () => {
+        expect(calcReducer(
+            {
+                value: "10%",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'EQUALLY'
+            }
+            ))
+            .toEqual({value: "", result: "0.1", history: ["10%=0.1"]});
+    });
+
+    it('should handle EQUALLY if sum percent', () => {
         expect(calcReducer(
             {
                 value: "2+10%",
@@ -179,21 +208,7 @@ describe('calc reducer', () => {
             .toEqual({value: "", result: "2.2", history: ["2+10%=2.2"]});
     });
 
-    it('should handle EQUALLY if sum percent at the left', () => {
-        expect(calcReducer(
-            {
-                value: "10%+2",
-                result: "",
-                history: []
-            }, 
-            {
-                type: 'EQUALLY'
-            }
-            ))
-            .toEqual({value: "", result: "2.1", history: ["10%+2=2.1"]});
-    });
-
-    it('should handle EQUALLY if minus percent at the right', () => {
+    it('should handle EQUALLY if minus percent', () => {
         expect(calcReducer(
             {
                 value: "2-10%",
@@ -207,21 +222,7 @@ describe('calc reducer', () => {
             .toEqual({value: "", result: "1.8", history: ["2-10%=1.8"]});
     });
 
-    it('should handle EQUALLY if minus percent at the left', () => {
-        expect(calcReducer(
-            {
-                value: "10%-2",
-                result: "",
-                history: []
-            }, 
-            {
-                type: 'EQUALLY'
-            }
-            ))
-            .toEqual({value: "", result: "-1.9", history: ["10%-2=-1.9"]});
-    });
-
-    it('should handle EQUALLY if multiplication percent at the right', () => {
+    it('should handle EQUALLY if multiplication percent', () => {
         expect(calcReducer(
             {
                 value: "2*10%",
@@ -235,21 +236,7 @@ describe('calc reducer', () => {
             .toEqual({value: "", result: "0.2", history: ["2*10%=0.2"]});
     });
 
-    it('should handle EQUALLY if multiplication percent at the left', () => {
-        expect(calcReducer(
-            {
-                value: "10%*2",
-                result: "",
-                history: []
-            }, 
-            {
-                type: 'EQUALLY'
-            }
-            ))
-            .toEqual({value: "", result: "0.2", history: ["10%*2=0.2"]});
-    });
-
-    it('should handle EQUALLY if division percent at the right', () => {
+    it('should handle EQUALLY if division percent', () => {
         expect(calcReducer(
             {
                 value: "2/10%",
@@ -261,34 +248,6 @@ describe('calc reducer', () => {
             }
             ))
             .toEqual({value: "", result: "20", history: ["2/10%=20"]});
-    });
-
-    it('should handle EQUALLY if division percent at the left', () => {
-        expect(calcReducer(
-            {
-                value: "10%/2",
-                result: "",
-                history: []
-            }, 
-            {
-                type: 'EQUALLY'
-            }
-            ))
-            .toEqual({value: "", result: "0.05", history: ["10%/2=0.05"]});
-    });
-
-    it('should handle EQUALLY if number percent', () => {
-        expect(calcReducer(
-            {
-                value: "2%",
-                result: "",
-                history: []
-            }, 
-            {
-                type: 'EQUALLY'
-            }
-            ))
-            .toEqual({value: "", result: "0.02", history: ["2%=0.02"]});
     });
 
     it('should handle CREATE_HISTORY', () => {
