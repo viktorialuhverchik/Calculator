@@ -65,7 +65,7 @@ describe('calc reducer', () => {
             .toEqual({value: "0+", result: "", history: []});
     });
 
-    it('should handle INPUT_VALUE if result and input symbol', () => {
+    it('should handle INPUT_VALUE if input symbol after number', () => {
         expect(calcReducer(
             {
                 value: "",
@@ -78,6 +78,21 @@ describe('calc reducer', () => {
             }
             ))
             .toEqual({value: "2+", result: "", history: []});
+    });
+
+    it('should handle INPUT_VALUE if result', () => {
+        expect(calcReducer(
+            {
+                value: "",
+                result: "2",
+                history: []
+            }, 
+            {
+                type: 'INPUT_VALUE',
+                value: "3"
+            }
+            ))
+            .toEqual({value: "3", result: "", history: []});
     });
 
     it('should handle INPUT_VALUE if input number', () => {
@@ -95,7 +110,7 @@ describe('calc reducer', () => {
             .toEqual({value: "12", result: "", history: []});
     });
 
-    it('should handle INPUT_VALUE if multiplication percent', () => {
+    it('should handle INPUT_VALUE if input percent after operation', () => {
         expect(calcReducer(
             {
                 value: "2+",
@@ -108,6 +123,51 @@ describe('calc reducer', () => {
             }
             ))
             .toEqual({value: "2+0%", result: "", history: []});
+    });
+
+    it('should handle INPUT_VALUE if input percent after percent', () => {
+        expect(calcReducer(
+            {
+                value: "2%",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'INPUT_VALUE',
+                value: "%"
+            }
+            ))
+            .toEqual({value: "2%", result: "", history: []});
+    });
+
+    it('should handle INPUT_VALUE if input operation after operation', () => {
+        expect(calcReducer(
+            {
+                value: "2+",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'INPUT_VALUE',
+                value: "-"
+            }
+            ))
+            .toEqual({value: "2-", result: "", history: []});
+    });
+
+    it('should handle INPUT_VALUE if input number after percent', () => {
+        expect(calcReducer(
+            {
+                value: "2%",
+                result: "",
+                history: []
+            }, 
+            {
+                type: 'INPUT_VALUE',
+                value: "3"
+            }
+            ))
+            .toEqual({value: "2%+3", result: "", history: []});
     });
 
     it('should handle DELETE_LAST', () => {
