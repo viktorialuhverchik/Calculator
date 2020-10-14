@@ -1,3 +1,4 @@
+import { Operations } from '../../types';
 import { CalcState, Element } from '../types';
 
 let regExp = new RegExp(/[+-/*]/);
@@ -5,7 +6,7 @@ let regExp = new RegExp(/[+-/*]/);
 export const checkInputValue = (state: CalcState, value: string) => {
     let isOperator: boolean = regExp.test(value);
     if (state.value === "" && state.result === "") {
-        if (isOperator || value === "%") {
+        if (isOperator || value === Operations.Percent) {
             value = `0${value}`;
         };
         state.value = `${state.value}${value}`;
@@ -19,14 +20,14 @@ export const checkInputValue = (state: CalcState, value: string) => {
                 let updatedValue: string = state.value.slice(0, state.value.length - 2);
                 state.value = `${updatedValue}${value}`;
             };
-            if (value === "%") {
+            if (value === Operations.Percent) {
                 let updatedValue: string = state.value.slice(0, state.value.length - 1);
                 state.value = `${updatedValue}0${value}`;
             };
-        } else if (lastSymbol === "%" && value === "%") {
+        } else if (lastSymbol === Operations.Percent && value === Operations.Percent) {
             let updatedValue: string = state.value.slice(0, state.value.length - 2);
             state.value = `${updatedValue}${value}`;
-        } else if (lastSymbol === "%" && !isOperator) {
+        } else if (lastSymbol === Operations.Percent && !isOperator) {
             let updatedValue: string = state.value.slice(0, state.value.length - 1);
             state.value = `${updatedValue}+${value}`;
         };
@@ -57,7 +58,7 @@ export const calculate = (state: CalcState) => {
             };
             continue;
         };
-        if (symbol === "%") {
+        if (symbol === Operations.Percent) {
             let percentValue = parseInt(element.value) / 100;
             if (valuesForCalculate.length === 0) {
                 element.value = `${percentValue}`;
@@ -66,16 +67,16 @@ export const calculate = (state: CalcState) => {
             let lastNumber: number = parseInt(valuesForCalculate[valuesForCalculate.length - 1].value);
             let newLastNumber: number = 0;
             switch(element.operator) {
-                case "+":
+                case Operations.Plus:
                     newLastNumber = lastNumber + percentValue * lastNumber;
                     break;
-                case "-":
+                case Operations.Minus:
                     newLastNumber = lastNumber - percentValue * lastNumber;
                     break;
-                case "*":
+                case Operations.Multiplication:
                     newLastNumber = lastNumber * percentValue;
                     break;
-                case "/":
+                case Operations.Division:
                     newLastNumber = lastNumber / percentValue;
                     break;
             };
