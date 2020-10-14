@@ -89,7 +89,7 @@ export const calculate = (state: CalcState) => {
     if (element.value) {
         valuesForCalculate.push(element);   
     };
-    let result: number = eval(valuesForCalculate.map((item: Element) => item.operator + item.value).join(""));
+    let result: number = eval(valuesForCalculate.map((item: Element) => `${item.operator}${item.value}`).join(""));
     return state.result = `${result}`;
 };
 
